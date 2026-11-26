@@ -1,0 +1,53 @@
+cars = ['audi', 'bmw', 'skoda', 'kia']
+
+for pojazd in cars:
+    if pojazd == 'skoda':
+        print(f"Samochód: {pojazd} KUPIĘ")
+    else:
+        print(f"Samochód: {pojazd} NIE KUPIĘ")
+
+# ALTERNATYWA - teraz iterujemy po numerze tablicy (range() - petla licznikowa, a ta wyzej to byla elementowa ;))
+for nr in range(len(cars)):
+    if cars[nr] == 'skoda':
+        print(f"Samochód: {cars[nr]} KUPIĘ")
+    else:
+        print(f"Samochód: {cars[nr]} NIE KUPIĘ")
+
+print("=" * 60)
+
+garaz = {
+    "Toyota": "Corolla",
+    "Mazda": "CX-5",
+    "BMW": "M3",
+    "Tesla": "Model S"
+}
+
+print("\n--- MOJA KOLEKCJA ---")
+
+for marka, model in garaz.items():
+    print(f"Marka: {marka} | Model: {model}")
+
+import slownik
+# lub
+from slownik import auta_szczegoly as kol
+for tablica, wartosc in kol.items():
+    print(f"Pojazd o nr rej: {tablica} ma przebieg: {wartosc["przebieg"]}")
+
+
+print("=" * 60)
+
+from garaz import garaz
+from prettytable import PrettyTable as pt
+
+tabelka=pt(["Pojazd", "Rok"])
+for x,y in garaz.items():
+    marka=x
+    model, dane = y
+    rok = dane[0]
+    # print(f"{marka} jest z {rok} roku")
+    tabelka.add_row([marka, rok])
+print(tabelka)
+
+csv = tabelka.get_csv_string()
+
+print(csv)
